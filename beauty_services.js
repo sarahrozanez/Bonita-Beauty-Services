@@ -165,12 +165,8 @@ var displayStaffImage = function()
 {
 	staffName = $("staff").value;
 
-	//alert("deputyArray " + deputyArray);
-
-
 	for (var index in taskArray)
 	{
-		//alert(deputyTask[index]);
 
 		if (staffName == staffArray[index])
 		{
