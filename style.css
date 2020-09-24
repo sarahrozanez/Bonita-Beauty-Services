@@ -1,0 +1,113 @@
+.text {
+  background-color: #212221;
+  color: white;
+  font-size: 16px;
+  padding: 16px 32px;
+}
+
+.image {
+  opacity: 1;
+  display: block;
+  width: 100%;
+  height: auto;
+  transition: .5s ease;
+  backface-visibility: hidden;
+  height: 100%;;
+}
+
+.middle {
+  transition: .5s ease;
+  opacity: 0;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  -ms-transform: translate(-50%, -50%);
+  text-align: center;
+}
+
+.w3-display-container:hover .image {
+  opacity: 0.3;
+}
+
+.w3-display-container:hover .middle {
+  opacity: 1;
+}
+
+#midcenter
+{
+margin-top: 100px;
+height: 200pc;
+width: 600px; 
+float: left;
+display: none;
+visibility: hidden;
+}
+
+#midright
+{
+  width: 200px; 
+  float: right;
+}
+
+#pickstaff
+{
+  display: none;
+}
+
+#picktime
+{
+  display: none;
+}
+
+#pickdate
+{
+  display: none;
+}
+
+#clickselectbutton
+{
+  display: none;
+}
+
+
+#staffselected {
+  height: 280px;
+}
+
+#stafftext_hold {
+  padding: 10px 10px;
+  font-size: 18pt;
+  text-align: center;
+
+  visibility: hidden;
+}
+
+#staffimage_hold {
+    visibility: hidden;
+} 
+
+.column {
+  float: left;
+  width: 30.00%;
+  padding: 15px;
+}
+
+/* Clear floats after the columns */
+.row:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+
+#staffinfo{
+  visibility: hidden;
+}
+
+.logo-text{
+  color: rgb(0, 0, 0)!important;
+  text-align: center;
+  margin: 5px;
+}
+
+
