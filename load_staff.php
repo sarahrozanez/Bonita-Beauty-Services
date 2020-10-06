@@ -23,7 +23,7 @@ if (!$db)
 	exit;
 }
 
-$statement  = "SELECT firstname, lastname,	phone, image_file ";
+$statement  = "SELECT firstname, lastname, description, email,	phone, image_file ";
 $statement .= "FROM staff ";
 $statement .= "ORDER BY firstname ";
 
@@ -47,8 +47,11 @@ if (!$result) {
 		
 		$firstname  	= $row['firstname'];
 		$image_file 	= $row['image_file'];
+		$description 	= $row['description'];
+		$phone 	= $row['phone'];
+		$email 	= $row['email'];
 		
-		print "<staff image='".$image_file."' task='".$firstname."'>".$firstname."</staff>";
+		print "<staff image='".$image_file."' task='".$firstname."' description =  '".$description."' phone =  '".$phone."' email =  '".$email."'>".$firstname."</staff>";
 	}
 }
 

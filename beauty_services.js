@@ -3,6 +3,7 @@ var targetElement;
 var taskArray;
 var imageArray;
 
+
 var Request = new XMLHttpRequest();
 
 
@@ -39,7 +40,7 @@ function createOptionsAndImage(myXML, target, data)
 {
 	console.log("target: " + target);
 	console.log("data: " + data);
-	//showXMLText(myXML);  //Displays XML in an alert() box
+	showXMLText(myXML);  //Displays XML in an alert() box
 	
 	if (target == "staff")
 	{
@@ -62,6 +63,7 @@ function createOptionsAndImage(myXML, target, data)
 			//services
 			taskArray = new Array();
 			imageArray = new Array();
+			console.log(XMLElements);
 		
 			for (loopIndex = 0; loopIndex < XMLElements.length; loopIndex++)
 			{
@@ -105,11 +107,17 @@ function createOptionsStaff(myXML, target, data)
 		
 	staffArray = new Array();
 	staffImageArray = new Array();
+	staffDescriptionArray = new Array();
+	staffPhoneArray = new Array();
+	staffEmailArray = new Array();
 
 	for (loopIndex = 0; loopIndex < XMLElements.length; loopIndex++)
 	{
 		staffArray[loopIndex] =  XMLElements[loopIndex].firstChild.data;
 		staffImageArray[loopIndex] = XMLElements[loopIndex].getAttribute('image');
+		staffDescriptionArray[loopIndex] = XMLElements[loopIndex].getAttribute('description');
+		staffPhoneArray[loopIndex] = XMLElements[loopIndex].getAttribute('phone');
+		staffEmailArray[loopIndex] = XMLElements[loopIndex].getAttribute('email');
 
 		myHTML += "<option value='" + staffArray[loopIndex] + "'>" + staffArray[loopIndex] + "</option>";
 	}
@@ -164,6 +172,9 @@ var displayServiceImage = function()
 var displayStaffImage = function()
 {
 	staffName = $("staff").value;
+	var staffDescription;
+	var staffPhone;
+	var staffEmail;
 
 	for (var index in taskArray)
 	{
@@ -171,6 +182,9 @@ var displayStaffImage = function()
 		if (staffName == staffArray[index])
 		{
 			staffImage = staffImageArray[index];
+			staffDescription = staffDescriptionArray[index];
+			staffPhone = staffPhoneArray[index];
+			staffEmail = staffEmailArray[index];
 		}
 	}
 	//$("midcenter").style.visibility = 'visible';
@@ -178,6 +192,14 @@ var displayStaffImage = function()
   $("stafftext_hold").style.visibility = 'visible';
 	$("staffimage_hold").style.visibility = 'visible';
 	$("staffinfo").style.visibility = 'visible';
+	$("midcenter").style.display='inline';
+
+	console.log(staffDescription);
+	document.getElementById("stafftext_hold").innerHTML = staffName;
+	document.getElementById("staffDescrip").innerHTML = staffDescription;
+	document.getElementById("staffPhone").innerHTML = staffPhone;
+	document.getElementById("staffEmail").innerHTML = staffEmail;
+	
 
 	$("staffimage_hold").src = "images/" + staffImage;
 
@@ -188,7 +210,7 @@ var displayStaffImage = function()
 
 	getXML(dataSource, target, data);
 
-	$("pickdaytime").style.display = "block";
+	$("picktime").style.display = "block";
 	$("pickdate").style.display = "block";
 
 }
@@ -205,6 +227,8 @@ var collectInformation = function()
 
 window.onload = function () {
 
+	console.log("entering beauty_services");
+
 	//load services from database
 	
 	var dataSource = 'load_services_db.php';
@@ -214,6 +238,6 @@ window.onload = function () {
 	
 	$("service").onchange = displayServiceImage;
 	$("staff").onchange = displayStaffImage;
- // $("daytime").onchange = collectInformation;
+  $("daytime").onchange = collectInformation;
 }
 

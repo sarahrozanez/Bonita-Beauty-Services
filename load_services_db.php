@@ -7,7 +7,13 @@ header("Content-type: text/xml");  // Makes IE 7 see the returned document as XM
 print '<?xml version = "1.0" ?>';
 
 print '<mydata>';
- 
+
+	// Allow the config
+	//define('__CONFIG__', true);
+	// Include the DB.php file;
+	//include_once "./inc/classes/DB.php";
+
+	//$db = DB::getConnection();
 //Connect to the Database
 				
 $host =  'localhost';
@@ -16,7 +22,6 @@ $password = '';
 $dbname = 'login_course';
 
 $db = mysqli_connect($host, $userid, $password, $dbname);
-
 if (!$db)
 {
 	print "<h1>Unable to Connect to MySQL</h1>";

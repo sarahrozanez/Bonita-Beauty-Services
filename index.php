@@ -1,21 +1,37 @@
+<?php
+	// Allow the config
+	define('__CONFIG__', true);
+
+	// Require the config
+  require_once "inc/config.php"; 
+  Page::ForceLogin();
+
+  $User = new User($_SESSION['user_id']);
+?>
+
 <!DOCTYPE html>
 <html>
-<title>Bonita Services!</title>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
-<script src="https://code.jquery.com/jquery-3.5.0.js"></script>
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-<script src="beauty_services.js"></script>
-<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
-  integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+  <heah>
+  <script src="./beauty_services.js"></script>
+  <title>Bonita Services!</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
 
-<link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css"
-  integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous" />
-<link rel="stylesheet" href="style.css" type="text/css" media="screen">
+  <script type="text/javascript" src="https://code.jquery.com/jquery-3.5.0.js"></script>
+  <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+    integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+
+  <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css"
+    integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous" />
+  <link rel="stylesheet" href="style.css" type="text/css" media="screen">
+  <script src="./beauty_services.js"></script>
+</head>
 
 <body>
-
+<script type="text/javascript" src="js/beauty_services.js"></script>
   <!-- Navbar (sit on top) -->
   <div class="w3-top">
     <div class="w3-bar w3-white w3-wide w3-padding w3-card">
@@ -25,7 +41,8 @@
         <a href="#services" class="w3-bar-item w3-button">Services</a>
         <a href="#about" class="w3-bar-item w3-button">About</a>
         <a href="#contact" class="w3-bar-item w3-button">Contact</a>
-        <a href="#booknow" class="w3-bar-item w3-button">Book Now!</a>
+        <a href="/login.php" class="w3-bar-item w3-button">Login</a>
+        <a href="/login.php" class="w3-bar-item w3-button">Book Now!</a>
       </div>
     </div>
   </div>
@@ -35,22 +52,19 @@
     <img class="w3-image" src="./images/logo.png" alt="Architecture" width="550" height="600">
     <div class="w3-display-middle w3-margin-top w3-center">
       <h1 class="logo-text"><b>Bonita Beauty </b><br>Services</br></span>
+      <p>Hello <?php echo $User->email; ?></p>
     </div>
   </header>
 
   <!-- Page content -->
   <div class="w3-content w3-padding" style="max-width:1564px">
-    
 
     <!-- Project Section -->
     <div class="w3-container w3-padding-32" id="services">
       <h3 class="w3-border-bottom w3-border-light-grey w3-padding-16">Services</h3>
     </div>
-
-    <div class="w3-row-padding" id= "services-items">
-    
+    <div class="w3-row-padding" id="services-items">
     </div>
-
 
     <!-- About Section -->
     <div class="w3-container w3-padding-32" id="about">
@@ -67,15 +81,19 @@
 
     <div class="w3-row-padding w3-grayscale">
       <div class="w3-col l3 m6 w3-margin-bottom">
-        <img src="./images/John Doe.png" alt="John" style="width:100%">
+        <div class="imageContainer">
+        <img class="image" src="./images/John Doe.png" alt="John" >
+      </div>
         <h3>John Doe</h3>
         <p class="w3-opacity">Massagist</p>
         <p>Phasellus eget enim eu lectus faucibus vestibulum. Suspendisse sodales pellentesque elementum.</p>
         <p><button class="w3-button w3-light-grey w3-block">Contact</button></p>
       </div>
       <div class="w3-col l3 m6 w3-margin-bottom">
-        <img src="/w3images/team1.jpg" alt="Jane" style="width:100%">
-        <h3>Jane Doe</h3>
+        <div class="imageContainer">
+        <img class="image" src="./images/Lorena.jpg" alt="Lorena" >
+      </div>
+        <h3>Lorena Doe</h3>
         <p class="w3-opacity">Architect</p>
         <p>Phasellus eget enim eu lectus faucibus vestibulum. Suspendisse sodales pellentesque elementum.</p>
         <p><button class="w3-button w3-light-grey w3-block">Contact</button></p>
@@ -115,7 +133,7 @@
     <!-- book now Section -->
 
 
-    <div class="row">
+    <div class="rowBookNow">
       <div class="column">
         <div class="w3-container w3-padding-32" id="booknow">
           <h3 class="w3-border-bottom w3-border-light-grey w3-padding-16">Book now!</h3>
@@ -136,9 +154,8 @@
           </p>
 
 
-
           <p id="pickdate">
-            <label for="thedate"><span class="punchit">And: </span> Pick a Date:</label><br>
+            <label for="thedate"><span class="punchit"></span> Pick a Date:</label><br>
             <input name="thedate" id="thedate" size="11" placeholder="YYYY-MM-DD">
           </p>
 
@@ -157,39 +174,36 @@
           <button class="w3-button w3-black w3-section" type="submit">
             <i class="fa fa-paper-plane"></i> BOOK
           </button>
-
-
           </form>
-
-
         </div>
-
       </div>
       <div class="column">
         <div id="midcenter">
-          <div id="staffselected">
-
-            <p id="stafftext_hold">Staff Selected</p>
-            <img id="staffimage_hold" src="images/deputy_sheri.jpg">
-            <div id= "staffinfo">
-            <p>Name: xxxx</p>
-            <p>Phone: xxxx</p>
-            <p>Email: xxxx</p>
+          <div class="rowStaff">
+            <div id="staffselected">
+              <p id="stafftext_hold"></p>
+              <img id="staffimage_hold" src="">
+            </div>
           </div>
+          <div class="rowStaff">
+            <div id="staffinfo">
+              <p><b>Description: </b>
+                <p id = "staffDescrip"></p>
+              </p>
+              <p><b>Phone: </b>
+                <p id = "staffPhone"></p>
+              </p>
+              <p><b>Email: </b>
+                <p id = "staffEmail"></p>
+              </p>
+            </div>
           </div>
         </div>
-
       </div>
-
     </div>
 
   </div>
 
-
-
-  <!-- Image of location/map -->
-  <div class="w3-container">
-    <img src="/w3images/map.jpg" class="w3-image" style="width:100%">
   </div>
 
   <!-- End page content -->
@@ -201,7 +215,10 @@
     <p>Powered by <a href="https://www.w3schools.com/w3css/default.asp" title="W3.CSS" target="_blank"
         class="w3-hover-text-green">Sarah and Natascha </a></p>
   </footer>
+<script src="main.js"></script>
+<script src="./beauty_services.js"></script>
 
 </body>
 
 </html>
+
