@@ -41,8 +41,8 @@
         <a href="#services" class="w3-bar-item w3-button">Services</a>
         <a href="#about" class="w3-bar-item w3-button">About</a>
         <a href="#contact" class="w3-bar-item w3-button">Contact</a>
-        <a href="/login.php" class="w3-bar-item w3-button">Login</a>
-        <a href="/login.php" class="w3-bar-item w3-button">Book Now!</a>
+        <a href="#rowBookNow" class="w3-bar-item w3-button">Book Now!</a>
+        <a id = "optionBooks" href="./books.php" class="w3-bar-item w3-button">Your Books</a>
       </div>
     </div>
   </div>
@@ -133,7 +133,7 @@
     <!-- book now Section -->
 
 
-    <div class="rowBookNow">
+    <div id="rowBookNow" class="rowBookNow">
       <div class="column">
         <div class="w3-container w3-padding-32" id="booknow">
           <h3 class="w3-border-bottom w3-border-light-grey w3-padding-16">Book now!</h3>

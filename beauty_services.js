@@ -2,6 +2,7 @@ var targetElement;
 
 var taskArray;
 var imageArray;
+var idArray;
 
 
 var Request = new XMLHttpRequest();
@@ -63,10 +64,12 @@ function createOptionsAndImage(myXML, target, data)
 			//services
 			taskArray = new Array();
 			imageArray = new Array();
+			idArray = new Array();
 			console.log(XMLElements);
 		
 			for (loopIndex = 0; loopIndex < XMLElements.length; loopIndex++)
 			{
+				idArray[loopIndex] =  XMLElements[loopIndex].getAttribute('service_id');
 				taskArray[loopIndex] =  XMLElements[loopIndex].getAttribute('task');
 				imageArray[loopIndex] = XMLElements[loopIndex].getAttribute('image');
 		
@@ -77,11 +80,11 @@ function createOptionsAndImage(myXML, target, data)
 				`<div class="w3-col l3 m6 w3-margin-bottom">
 						<div class="w3-display-container" style="height:300px;">
 							<div class="w3-display-topleft w3-black w3-padding">${taskArray[loopIndex]}</div>
-							<img src="./images/${imageArray[loopIndex]}" class="image" />
+							<img id= "${idArray[loopIndex]}" src="./images/${imageArray[loopIndex]}" class="image" />
 							<div class="middle">
 								<a href="#booknow"></a>
 								<div class="text">
-									<a href="#booknow">Book now!</a>
+									<a onclick="triggerChange(${idArray[loopIndex]})" href="#booknow">Book now!</a>
 								</div>
 							</div>
 						</div>
@@ -224,6 +227,13 @@ var collectInformation = function()
 
 }
 
+function triggerChange(id) {
+	document.getElementById("service").options[id].selected = true;
+
+	displayServiceImage();
+}
+
+
 
 window.onload = function () {
 
@@ -236,6 +246,8 @@ window.onload = function () {
 	var data = "service";
 	getXML(dataSource, target, data);
 	
+	$("optionBooks").style.visibility = 'visible';
+
 	$("service").onchange = displayServiceImage;
 	$("staff").onchange = displayStaffImage;
   $("daytime").onchange = collectInformation;

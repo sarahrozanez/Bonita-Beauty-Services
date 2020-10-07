@@ -23,9 +23,11 @@ if (!$db)
 	exit;
 }
 
-$statement  = "SELECT firstname, lastname, description, email,	phone, image_file ";
-$statement .= "FROM staff ";
-$statement .= "ORDER BY firstname ";
+//$statement  = "SELECT firstname, lastname, description, email,	phone, image_file ";
+//$statement .= "FROM staff ";
+//$statement .= "ORDER BY firstname ";
+
+$statement  = "SELECT s.firstname, s.lastname, s.description, s.email,s.phone, s.image_file FROM staff s, staff_service c WHERE s.staff_id = c.staff_id AND c.service_id = 1";
 
 $result = mysqli_query($db, $statement);
 
