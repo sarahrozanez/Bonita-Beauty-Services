@@ -28,9 +28,9 @@ if (!$db)
 	exit;
 }
 
-$statement  = "SELECT title, optionvalue, image_file ";
+$statement  = "SELECT service_id, title, optionvalue, image_file ";
 $statement .= "FROM beauty_service ";
-$statement .= "ORDER BY title ";
+$statement .= "ORDER BY service_id ";
 
 $result = mysqli_query($db, $statement);
 
@@ -50,11 +50,12 @@ if (!$result) {
 	{
 		$row = mysqli_fetch_array($result);
 		
+		$service_id  		= $row['service_id'];
 		$title  		= $row['title'];
 		$optionvalue  	= $row['optionvalue'];
 		$image_file 	= $row['image_file'];
 		
-		print "<service image='".$image_file."' task='".$optionvalue."'>".$title."</service>";
+		print "<service service_id='".$service_id."' image='".$image_file."' task='".$optionvalue."'>".$title."</service>";
 	}
 }
 
