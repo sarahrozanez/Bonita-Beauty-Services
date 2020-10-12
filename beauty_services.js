@@ -4,9 +4,9 @@ var taskArray;
 var imageArray;
 var idArray;
 
+var serv_id;
 
 var Request = new XMLHttpRequest();
-
 
 var $ = function(id) {
     return document.getElementById(id);
@@ -14,6 +14,7 @@ var $ = function(id) {
 
 function getXML(dataSource, target, data)
 {
+	console.log("getting xml: dataSource" +dataSource+ "target: " +target+  "data: " +data );
   if(Request) {
 		targetElement = $(target);
 		Request.open("POST", dataSource);
@@ -31,17 +32,18 @@ function getXML(dataSource, target, data)
 				
       }
     }
-
-		Request.send("data=" + data);
+		console.log("Request.send");
+		console.log("data=" + data +"&serv_id=" + serv_id);
+		//  +"&serv_id=" + serv_id
+		Request.send("data=" + data +"&serv_id=" + serv_id);
 		
   }
 }
 
 function createOptionsAndImage(myXML, target, data)
 {
-	console.log("target: " + target);
-	console.log("data: " + data);
-	showXMLText(myXML);  //Displays XML in an alert() box
+	console.log("createOptionsAndImage: target: " +target+  "data: " +data );
+	//showXMLText(myXML);  //Displays XML in an alert() box
 	
 	if (target == "staff")
 	{
@@ -95,15 +97,13 @@ function createOptionsAndImage(myXML, target, data)
 		
 		document.getElementById("services-items").innerHTML = myHTMLImages;
 		document.getElementById(target).innerHTML = myHTML;
-		
-		
 	}
 
 }
 
 function createOptionsStaff(myXML, target, data)
 {
-	
+	console.log("createOptionsStaff: target: " +target+  " data: " +data );
 	var XMLElements = myXML.getElementsByTagName(data);
 	
 	var myHTML =  "<option value='-'>-</option>";
@@ -160,6 +160,11 @@ var displayServiceImage = function()
 			serviceImage = imageArray[index];
 		}
 	}
+
+	var optionServ = document.getElementById("service");
+	serv_id = optionServ.selectedIndex;
+
+	console.log("serv_id " + serv_id);
 
 	var dataSource = "load_staff.php";
 	var target = "staff";

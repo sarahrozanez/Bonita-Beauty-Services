@@ -1,6 +1,7 @@
 <?php
+$serv_id = $_REQUEST['serv_id'];
 $myData = $_REQUEST['data'];  //This recieves the data passed from the Send() method
-
+//$_POST["serv_id"]
 $myData = strtolower($myData);   //Converts the value in $myData to lowercase
 
 header("Content-type: text/xml");  // Makes IE 7 see the returned document as XML!!!
@@ -27,7 +28,7 @@ if (!$db)
 //$statement .= "FROM staff ";
 //$statement .= "ORDER BY firstname ";
 
-$statement  = "SELECT s.firstname, s.lastname, s.description, s.email,s.phone, s.image_file FROM staff s, staff_service c WHERE s.staff_id = c.staff_id AND c.service_id = 1";
+$statement  = "SELECT s.firstname, s.lastname, s.description, s.email,s.phone, s.image_file FROM staff s, staff_service c WHERE s.staff_id = c.staff_id AND c.service_id = $serv_id";
 
 $result = mysqli_query($db, $statement);
 
