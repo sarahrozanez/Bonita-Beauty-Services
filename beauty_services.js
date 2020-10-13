@@ -5,6 +5,8 @@ var imageArray;
 var idArray;
 
 var serv_id;
+var staff_id;
+var staff_value;
 
 var Request = new XMLHttpRequest();
 
@@ -33,9 +35,9 @@ function getXML(dataSource, target, data)
       }
     }
 		console.log("Request.send");
-		console.log("data=" + data +"&serv_id=" + serv_id);
-		//  +"&serv_id=" + serv_id
-		Request.send("data=" + data +"&serv_id=" + serv_id);
+		console.log("data=" + data +"&serv_id=" + serv_id+"&staff_value=" + staff_value);
+		//  +"&serv_id=" + serv_id staff_value
+		Request.send("data=" + data +"&serv_id=" + serv_id+"&staff_value=" + staff_value);
 		
   }
 }
@@ -113,6 +115,7 @@ function createOptionsStaff(myXML, target, data)
 	staffDescriptionArray = new Array();
 	staffPhoneArray = new Array();
 	staffEmailArray = new Array();
+	staffIDArray = new Array();
 
 	for (loopIndex = 0; loopIndex < XMLElements.length; loopIndex++)
 	{
@@ -121,6 +124,7 @@ function createOptionsStaff(myXML, target, data)
 		staffDescriptionArray[loopIndex] = XMLElements[loopIndex].getAttribute('description');
 		staffPhoneArray[loopIndex] = XMLElements[loopIndex].getAttribute('phone');
 		staffEmailArray[loopIndex] = XMLElements[loopIndex].getAttribute('email');
+		staffIDArray[loopIndex] = XMLElements[loopIndex].getAttribute('staff_id');
 
 		myHTML += "<option value='" + staffArray[loopIndex] + "'>" + staffArray[loopIndex] + "</option>";
 	}
@@ -211,6 +215,11 @@ var displayStaffImage = function()
 
 	$("staffimage_hold").src = "images/" + staffImage;
 
+
+	var optionStaff = document.getElementById("staff");
+	staff_value = optionStaff.value;
+
+	console.log("staff_value " + staff_value);
 
 	var dataSource = "load_daytime.php";
 	var target = "daytime";
