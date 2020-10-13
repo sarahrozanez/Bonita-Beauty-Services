@@ -155,8 +155,10 @@
 
 
           <p id="pickdate">
-            <label for="thedate"><span class="punchit"></span> Pick a Date:</label><br>
-            <input name="thedate" id="thedate" size="11" placeholder="YYYY-MM-DD">
+            <label for="thedate"> Pick a Date:</label><br>
+            <select name="thedate" id="thedate" size="1">
+            <option value='-'>-</option>
+            </select>
           </p>
 
           <p id="picktime">

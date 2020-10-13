@@ -1,6 +1,7 @@
 <?php
 $myData = $_REQUEST['data'];  //This recieves the data passed from the Send() method
-
+$staff_value = $_REQUEST['staff_value'];
+$serv_id = $_REQUEST['serv_id'];
 $myData = strtolower($myData);   //Converts the value in $myData to lowercase
 
 header("Content-type: text/xml");  // Makes IE 7 see the returned document as XML!!!
@@ -23,9 +24,7 @@ if (!$db)
 	exit;
 }
 
-$statement  = "SELECT firstname, lastname,	phone, image_file ";
-$statement .= "FROM staff ";
-$statement .= "ORDER BY firstname ";
+$statement  = "SELECT ss.staff_service_id, ss.date, ss.time FROM staff_service ss, staff s WHERE s.staff_id = ss.staff_id AND s.firstname = '$staff_value' and ss.service_id = $serv_id";
 
 $result = mysqli_query($db, $statement);
 
@@ -45,10 +44,11 @@ if (!$result) {
 	{
 		$row = mysqli_fetch_array($result);
 		
-		$firstname  	= $row['firstname'];
-		$image_file 	= $row['image_file'];
+		$date  	= $row['date'];
+		$time 	= $row['time'];
+		$staff_service_id 	= $row['staff_service_id'];
 		
-		print "<staff image='".$image_file."' task='".$firstname."'>".$firstname."</staff>";
+		print "<daytime date='".$date."' time='".$time."'>".$staff_service_id."</daytime>";
 	}
 }
 
