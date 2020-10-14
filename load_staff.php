@@ -28,7 +28,7 @@ if (!$db)
 //$statement .= "FROM staff ";
 //$statement .= "ORDER BY firstname ";
 
-$statement  = "SELECT s.staff_id, s.firstname, s.lastname, s.description, s.email,s.phone, s.image_file FROM staff s, staff_service c WHERE s.staff_id = c.staff_id AND c.service_id = $serv_id";
+$statement  = "SELECT c.staff_service_id, s.staff_id, s.firstname, s.lastname, s.description, s.email,s.phone, s.image_file FROM staff s, staff_service c WHERE s.staff_id = c.staff_id AND c.service_id = $serv_id";
 
 $result = mysqli_query($db, $statement);
 
@@ -47,7 +47,7 @@ if (!$result) {
 	for ($i = 0; $i < $numresults; $i++)
 	{
 		$row = mysqli_fetch_array($result);
-
+		$staff_service_id  	= $row['staff_service_id'];
 		$staff_id  	= $row['staff_id'];
 		$firstname  	= $row['firstname'];
 		$image_file 	= $row['image_file'];
@@ -55,7 +55,7 @@ if (!$result) {
 		$phone 	= $row['phone'];
 		$email 	= $row['email'];
 		
-		print "<staff staff_id='".$staff_id."' image='".$image_file."' task='".$firstname."' description =  '".$description."' phone =  '".$phone."' email =  '".$email."'>".$firstname."</staff>";
+		print "<staff staff_service_id='".$staff_service_id."' staff_id='".$staff_id."' image='".$image_file."' task='".$firstname."' description =  '".$description."' phone =  '".$phone."' email =  '".$email."'>".$firstname."</staff>";
 	}
 }
 
