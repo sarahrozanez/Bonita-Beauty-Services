@@ -8,6 +8,7 @@ var serv_id;
 var staff_id;
 var staff_value;
 var date;
+var staff_service_id;
 
 var Request = new XMLHttpRequest();
 
@@ -37,7 +38,6 @@ function getXML(dataSource, target, data)
     }
 		console.log("Request.send");
 		console.log("data=" + data +"&serv_id=" + serv_id+"&staff_value=" + staff_value + "&date=" + date);
-		//  +"&serv_id=" + serv_id staff_value
 		Request.send("data=" + data +"&serv_id=" + serv_id+"&staff_value=" + staff_value + "&date=" + date);
 		
   }
@@ -106,6 +106,7 @@ function createOptionsAndImage(myXML, target, data)
 
 function createOptionsStaff(myXML, target, data)
 {
+	//staff_service_id
 	console.log("createOptionsStaff: target: " +target+  " data: " +data );
 	var XMLElements = myXML.getElementsByTagName(data);
 	
@@ -127,7 +128,7 @@ function createOptionsStaff(myXML, target, data)
 		staffEmailArray[loopIndex] = XMLElements[loopIndex].getAttribute('email');
 		staffIDArray[loopIndex] = XMLElements[loopIndex].getAttribute('staff_id');
 
-		myHTML += "<option value='" + staffArray[loopIndex] + "'>" + staffArray[loopIndex] + "</option>";
+		myHTML += "<option id= '" + staffIDArray[loopIndex] + "' value='" + staffArray[loopIndex] + "'>" + staffArray[loopIndex] + "</option>";
 	}
 	
 	document.getElementById(target).innerHTML = myHTML;
@@ -142,11 +143,6 @@ function showXMLText(myXML)
 	var myXMLtext = (new XMLSerializer()).serializeToString(myXML);
 	myXMLformatted = myXMLtext.replace(/</g, "\n<");
 	alert(myXMLformatted);
-}
-
-//get all services from database
-function getServices(){
-
 }
 
 
@@ -180,7 +176,6 @@ var displayServiceImage = function()
 	$("pickstaff").style.display = "block";
 
 }
-
 
 var displayStaffImage = function()
 {
@@ -268,6 +263,37 @@ function triggerChange(id) {
 	displayServiceImage();
 }
 
+function bookApt() {
+	var data = 'book';
+	var daytime = $("daytime").value;
+	console.log("getting book xml: dataSource load_book.php / target book / data book");
+  if(Request) {
+
+		Request.open("POST", 'load_book.php');
+    Request.setRequestHeader('Content-Type',
+      'application/x-www-form-urlencoded');
+
+    Request.onreadystatechange = function()
+    {
+      if (Request.readyState == 4 &&
+          Request.status == 200) {
+						alert(Request.responseText);
+						var myXML = Request.responseXML;  //XML
+
+			//	createOptionsAndImage(myXML, target, data);
+				
+      }
+    }
+		console.log("Request.send");
+		console.log("data=" + data +"&serv_id=" + serv_id+"&staff_value=" + staff_value + "&date=" + date+ "&time=" + daytime);
+		Request.send("data=" + data +"&serv_id=" + serv_id+"&staff_value=" + staff_value + "&date=" + date+ "&time=" + daytime);
+
+		$("pickstaff").style.display='none';
+		$("pickdate").style.display='none';
+		$("picktime").style.display='none';
+  }
+}
+
 
 
 window.onload = function () {
@@ -287,5 +313,7 @@ window.onload = function () {
 	$("staff").onchange = displayStaffImage;
 	$("thedate").onchange = collectInformationDate;
 	$("daytime").onchange =collectInformationTime
+
+	$("clickselectbutton").onclick = bookApt;
 }
 

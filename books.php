@@ -7,6 +7,59 @@
   Page::ForceLogin();
 
   $User = new User($_SESSION['user_id']);
+
+  function loadBookingDatabase(){
+
+    $user_id = $_SESSION['user_id'];
+    //Connect to the Database
+            
+    $host =  'localhost';
+    $userid =  'root';
+    $password = '';
+    $dbname = 'login_course';
+
+    $db = mysqli_connect($host, $userid, $password, $dbname);
+
+    if (!$db)
+    {
+      print "<h1>Unable to Connect to MySQL</h1>";
+      exit;
+    }
+
+    $statement  = "SELECT bs.title, s.firstname, ss.date, ss.time FROM beauty_service bs, staff s, staff_service ss, service_request sr WHERE sr.staff_service_id = ss.staff_service_id AND ss.staff_id = s.staff_id AND ss.service_id = bs.service_id AND sr.user_id = $user_id";
+
+    if ( !( $result = mysqli_query($db, $statement) ) )
+    {
+        print( "could not execute $statement" );
+        die ( mysqli_error() );
+    } // end if
+
+    echo "<!DOCTYPE html><html><body>\n";
+
+    print "<p><h1 id= heading>Check out your booked beauty services!</h1></p>";
+
+
+        echo "<table id ='tableBooks' border=2  >\n";
+        print( "<tr>" );
+            print( "<th>Service</th>" ); // title from beauty_service
+            print( "<th>Staff Name</th>" );// firstname from staff
+            print( "<th>Date</th>" ); // date from staff_service
+            print( "<th>Time</th>" ); // time from staff_service
+        print( "</tr>" );
+                
+        // fetch each record in result set
+        while ( $row = mysqli_fetch_row( $result ) )
+        {
+            $disName = $row[0];
+            // build table to display results
+            print( "<tr>" );
+            foreach ( $row as $value ) 
+            
+            print( "<td>&nbsp;$value</td>" );
+            print( "</tr>" );
+        } // end while
+        print "</table></body></html>\n";
+  }
 ?>
 
 <!DOCTYPE html>
@@ -49,12 +102,17 @@
     <img class="w3-image" src="./images/logo.png" alt="Architecture" width="550" height="600">
     <div class="w3-display-middle w3-margin-top w3-center">
       <h1 class="logo-text"><b>Bonita Beauty </b><br>Services</br></span>
-      <p>Hello <?php echo $User->email; ?></p>
+      <p>Hello <?php echo $User->user_name; ?></p>
     </div>
   </header>
 
   <!-- Page content -->
   <div class="w3-content w3-padding" style="max-width:1564px">
+
+
+<p>
+<?php loadBookingDatabase(); ?>
+</p>
 
 
   <!-- End page content -->
@@ -72,3 +130,9 @@
 </body>
 
 </html>
+
+
+
+
+
+

@@ -206,3 +206,17 @@ label {
   visibility: hidden;
 }
 
+#tableBooks {
+  width: 100%;
+	margin: 100px 100px 100px 100px;
+  border-collapse: collapse;
+  }
+
+  #heading {
+    text-align: center;
+    margin: 100px 100px 100px 100px;
+    border-collapse: collapse;
+    }
+
+  
+

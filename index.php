@@ -52,7 +52,7 @@
     <img class="w3-image" src="./images/logo.png" alt="Architecture" width="550" height="600">
     <div class="w3-display-middle w3-margin-top w3-center">
       <h1 class="logo-text"><b>Bonita Beauty </b><br>Services</br></span>
-      <p>Hello <?php echo $User->email; ?></p>
+      <p>Hello <?php echo $User->user_name; ?></p>
     </div>
   </header>
 
@@ -168,12 +168,7 @@
             </select>
           </p>
 
-
-          <p id="clickselectbutton">
-            <input type="submit" name="customerinformation" id="customerinformation" value="Enter Customer Information">
-          </p>
-
-          <button class="w3-button w3-black w3-section" type="submit">
+          <button id="clickselectbutton" class="w3-button w3-black w3-section" type="submit">
             <i class="fa fa-paper-plane"></i> BOOK
           </button>
           </form>
