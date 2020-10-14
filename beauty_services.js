@@ -7,6 +7,7 @@ var idArray;
 var serv_id;
 var staff_id;
 var staff_value;
+var date;
 
 var Request = new XMLHttpRequest();
 
@@ -35,9 +36,9 @@ function getXML(dataSource, target, data)
       }
     }
 		console.log("Request.send");
-		console.log("data=" + data +"&serv_id=" + serv_id+"&staff_value=" + staff_value);
+		console.log("data=" + data +"&serv_id=" + serv_id+"&staff_value=" + staff_value + "&date=" + date);
 		//  +"&serv_id=" + serv_id staff_value
-		Request.send("data=" + data +"&serv_id=" + serv_id+"&staff_value=" + staff_value);
+		Request.send("data=" + data +"&serv_id=" + serv_id+"&staff_value=" + staff_value + "&date=" + date);
 		
   }
 }
@@ -57,7 +58,7 @@ function createOptionsAndImage(myXML, target, data)
 		var myHTML =  "<option value='-'>-</option>";
 		var myHTMLImages = '';
 		
-		if (target == "daytime")
+		if (target == "thedate" || target == "daytime" )
 		{
 			for (loopIndex = 0; loopIndex < XMLElements.length; loopIndex++)
 			{
@@ -222,17 +223,37 @@ var displayStaffImage = function()
 	console.log("staff_value " + staff_value);
 
 	var dataSource = "load_daytime.php";
+	var target = "thedate";
+	var data = "thedate";
+
+	getXML(dataSource, target, data);
+
+
+	$("pickdate").style.display = "block";
+
+}
+
+var collectInformationDate = function()
+{
+	var daytime = $("daytime").value;
+	var thedate = $("thedate").value;
+
+	var optionDate = document.getElementById("thedate");
+	date = optionDate.value;
+
+	console.log("date " + date);
+
+	var dataSource = "load_time.php";
 	var target = "daytime";
 	var data = "daytime";
 
 	getXML(dataSource, target, data);
 
 	$("picktime").style.display = "block";
-	$("pickdate").style.display = "block";
 
 }
 
-var collectInformation = function()
+var collectInformationTime = function()
 {
 	var daytime = $("daytime").value;
 	var thedate = $("thedate").value;
@@ -264,6 +285,7 @@ window.onload = function () {
 
 	$("service").onchange = displayServiceImage;
 	$("staff").onchange = displayStaffImage;
-  $("daytime").onchange = collectInformation;
+	$("thedate").onchange = collectInformationDate;
+	$("daytime").onchange =collectInformationTime
 }
 
