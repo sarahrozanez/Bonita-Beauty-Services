@@ -10,6 +10,16 @@
 
   function loadBookingDatabase(){
 
+    $url = $_SERVER['REQUEST_URI'];
+
+    if (isset($_GET['ID'])) {
+      $parts = parse_url($url);
+      parse_str($parts['query'], $query);
+      $ID = $query['ID'];
+      }  
+       else {
+        }
+    
     $user_id = $_SESSION['user_id'];
     //Connect to the Database
             
@@ -26,7 +36,7 @@
       exit;
     }
 
-    $statement  = "SELECT bs.title, s.firstname, ss.date, ss.time FROM beauty_service bs, staff s, staff_service ss, service_request sr WHERE sr.staff_service_id = ss.staff_service_id AND ss.staff_id = s.staff_id AND ss.service_id = bs.service_id AND sr.user_id = $user_id";
+    $statement  = "SELECT sr.request_id, bs.title, s.firstname, ss.date, ss.time FROM beauty_service bs, staff s, staff_service ss, service_request sr WHERE sr.staff_service_id = ss.staff_service_id AND ss.staff_id = s.staff_id AND ss.service_id = bs.service_id AND sr.user_id = $user_id";
 
     if ( !( $result = mysqli_query($db, $statement) ) )
     {
@@ -41,6 +51,7 @@
 
         echo "<table id ='tableBooks' border=2  >\n";
         print( "<tr>" );
+            print( "<th>Request ID</th>" );
             print( "<th>Service</th>" ); // title from beauty_service
             print( "<th>Staff Name</th>" );// firstname from staff
             print( "<th>Date</th>" ); // date from staff_service
@@ -48,15 +59,36 @@
         print( "</tr>" );
                 
         // fetch each record in result set
-        while ( $row = mysqli_fetch_row( $result ) )
+        while ( $row = mysqli_fetch_array( $result ) )
         {
-            $disName = $row[0];
+
+            $request_id = $row['request_id'];
+            $title = $row['title'];
+            $firstname = $row['firstname'];
+            $date = $row['date'];
+            $time = $row['time'];
+
             // build table to display results
             print( "<tr>" );
-            foreach ( $row as $value ) 
-            
-            print( "<td>&nbsp;$value</td>" );
+                if(isset($ID) && $ID == $request_id){
+                
+                    print( "<td style='color:red'>$request_id</td>" );
+                    print( "<td style='color:red'>$title</td>" );
+                    print( "<td style='color:red'>$firstname</td>" );
+                    print( "<td style='color:red'>$date</td>" );
+                    print( "<td style='color:red'>$time</td>" );
+                } else {
+                    print( "<td>$request_id</td>" );
+                    print( "<td>$title</td>" );
+                    print( "<td>$firstname</td>" );
+                    print( "<td>$date</td>" );
+                    print( "<td>$time</td>" );                 
+                }
+                
+                //print( "<td><a href= 'delete.php?delete=$row[disorderID]'>Delete</td>");
+
             print( "</tr>" );
+
         } // end while
         print "</table></body></html>\n";
   }
@@ -85,13 +117,13 @@
   <!-- Navbar (sit on top) -->
   <div class="w3-top">
     <div class="w3-bar w3-white w3-wide w3-padding w3-card">
-      <a href="#home" class="w3-bar-item w3-button"><b></b> Bonita Beauty Services!</a>
+      <a href="./index.php" class="w3-bar-item w3-button"><b></b> Bonita Beauty Services!</a>
       <!-- Float links to the right. Hide them on small screens -->
       <div class="w3-right w3-hide-small">
-        <a href="./index.php/#services" class="w3-bar-item w3-button">Services</a>
-        <a href="./index.php/#about" class="w3-bar-item w3-button">About</a>
-        <a href="./index.php/#contact" class="w3-bar-item w3-button">Contact</a>
-        <a href="./index.php/#rowBookNow" class="w3-bar-item w3-button">Book Now!</a>
+        <a href="./index.php#services" class="w3-bar-item w3-button">Services</a>
+        <a href="./index.php#about" class="w3-bar-item w3-button">About</a>
+        <a href="./index.php#contact" class="w3-bar-item w3-button">Contact</a>
+        <a href="./index.php#rowBookNow" class="w3-bar-item w3-button">Book Now!</a>
         <a id = "optionBooks" href="./books.php" class="w3-bar-item w3-button">Your Books</a>
       </div>
     </div>

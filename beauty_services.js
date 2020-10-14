@@ -29,7 +29,7 @@ function getXML(dataSource, target, data)
     {
       if (Request.readyState == 4 &&
           Request.status == 200) {
-						alert(Request.responseText);
+						//alert(Request.responseText);
 						var myXML = Request.responseXML;  //XML
 
 				createOptionsAndImage(myXML, target, data);
@@ -97,9 +97,12 @@ function createOptionsAndImage(myXML, target, data)
 		
 			}
 		}
-		
-		document.getElementById("services-items").innerHTML = myHTMLImages;
+		if (target == "service"){
+			document.getElementById("services-items").innerHTML = myHTMLImages;
+			
+		}
 		document.getElementById(target).innerHTML = myHTML;
+		
 	}
 
 }
@@ -142,7 +145,7 @@ function showXMLText(myXML)
 
 	var myXMLtext = (new XMLSerializer()).serializeToString(myXML);
 	myXMLformatted = myXMLtext.replace(/</g, "\n<");
-	alert(myXMLformatted);
+	//alert(myXMLformatted);
 }
 
 
@@ -266,6 +269,12 @@ function triggerChange(id) {
 function bookApt() {
 	var data = 'book';
 	var daytime = $("daytime").value;
+	var service = $("service").value;
+	var staff = $("staff").value;
+	var thedate = $("thedate").value;
+	var daytime = $("daytime").value;
+
+	var requestID;
 	console.log("getting book xml: dataSource load_book.php / target book / data book");
   if(Request) {
 
@@ -277,8 +286,17 @@ function bookApt() {
     {
       if (Request.readyState == 4 &&
           Request.status == 200) {
-						alert(Request.responseText);
+
+						alert("Beauty Service " +service+ " booked with the professional " +staff+ " on "+thedate+ " at "+daytime);
+						//alert(Request.responseText);
 						var myXML = Request.responseXML;  //XML
+
+						var XMLElements = myXML.getElementsByTagName('requestID');
+						
+						requestID= XMLElements[0].firstChild.data;
+						console.log("requestIDmyXML" + requestID);
+
+						location.href='./books.php?ID='+requestID;
 
 			//	createOptionsAndImage(myXML, target, data);
 				
@@ -291,6 +309,8 @@ function bookApt() {
 		$("pickstaff").style.display='none';
 		$("pickdate").style.display='none';
 		$("picktime").style.display='none';
+
+		
   }
 }
 
