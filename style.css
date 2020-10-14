@@ -207,9 +207,10 @@ label {
 }
 
 #tableBooks {
-  width: 100%;
-	margin: 100px 100px 100px 100px;
+  width: 80%;
   border-collapse: collapse;
+  margin-left: 100px;
+  margin-bottom: 50px;
   }
 
   #heading {
@@ -217,6 +218,12 @@ label {
     margin: 100px 100px 100px 100px;
     border-collapse: collapse;
     }
+
+
+    tbody{
+      width: 100%;
+      display: table;
+  }
 
   
 

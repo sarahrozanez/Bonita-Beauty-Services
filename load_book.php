@@ -14,6 +14,9 @@ $time = $_REQUEST['time'];
 //$User = new User($_SESSION['user_id']);
 $user_id = $_SESSION['user_id'];
 $myData = strtolower($myData);   //Converts the value in $myData to lowercase
+
+header("Content-type: text/xml");  // Makes IE 7 see the returned document as XML!!!
+print '<?xml version = "1.0" ?>';
  
 //Connect to the Database
 				
@@ -87,11 +90,10 @@ if (!$resultINS) {
 	$outputINS  = "ERROR MySQL No: ".mysqli_errno($db)." ";
 	$outputINS .= "MySQL Error: ".mysqli_error($db)." ";
 	$outputINS .= "SQL: ".$statementInsert." ";
-	print "<staff>".$outputINS."</staff>";
+	print "<error>".$outputINS."</error>";
 	
 } else {
-				
-		print "Booking inserted!";
 
+	print "<requestID>".mysqli_insert_id($db)."</requestID>";
 }
 ?>

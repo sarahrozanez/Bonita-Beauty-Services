@@ -35,13 +35,13 @@
   <!-- Navbar (sit on top) -->
   <div class="w3-top">
     <div class="w3-bar w3-white w3-wide w3-padding w3-card">
-      <a href="#home" class="w3-bar-item w3-button"><b></b> Bonita Beauty Services!</a>
+      <a href="./index.php" class="w3-bar-item w3-button"><b></b> Bonita Beauty Services!</a>
       <!-- Float links to the right. Hide them on small screens -->
       <div class="w3-right w3-hide-small">
-        <a href="#services" class="w3-bar-item w3-button">Services</a>
-        <a href="#about" class="w3-bar-item w3-button">About</a>
-        <a href="#contact" class="w3-bar-item w3-button">Contact</a>
-        <a href="#rowBookNow" class="w3-bar-item w3-button">Book Now!</a>
+        <a href="./index.php#services" class="w3-bar-item w3-button">Services</a>
+        <a href="./index.php#about" class="w3-bar-item w3-button">About</a>
+        <a href="./index.php#contact" class="w3-bar-item w3-button">Contact</a>
+        <a href="./index.php#rowBookNow" class="w3-bar-item w3-button">Book Now!</a>
         <a id = "optionBooks" href="./books.php" class="w3-bar-item w3-button">Your Books</a>
       </div>
     </div>
