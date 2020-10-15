@@ -15,7 +15,7 @@ print '<mydata>';
 $host =  'localhost';
 $userid =  'root';
 $password = '';
-$dbname = 'login_course';
+$dbname = 'proj_beauty';
 
 $db = mysqli_connect($host, $userid, $password, $dbname);
 

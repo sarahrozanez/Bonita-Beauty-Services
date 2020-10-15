@@ -13,7 +13,7 @@ class DB {
 
 		try {
 
-            self::$con = mysqli_connect ('localhost', 'root', '', 'login_course');
+            self::$con = mysqli_connect ('localhost', 'root', '', 'proj_beauty');
 
             # set encoding to match PHP script encoding
             mysqli_set_charset(self::$con, 'utf8');

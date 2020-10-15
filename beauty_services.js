@@ -163,7 +163,7 @@ function createOptionsAndImageAbout(myXML, target, data) {
 
 		myHTMLImages += `<div class="w3-col l3 m6 w3-margin-bottom">
         <div class="imageContainer" style="height:300px;">
-        <img class="image" src="./images/${about_imageArray[loopIndex]}" >
+        <img class="imageAbout" src="./images/${about_imageArray[loopIndex]}" >
         </div>
         <h3>${XMLElements[loopIndex].firstChild.data}</h3>
         <p>${about_descriptionArray[loopIndex]}</p>

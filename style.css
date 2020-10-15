@@ -29,6 +29,18 @@
   border-radius: 10px;
   margin: 0 auto;
 }
+.imageAbout{
+  text-align: center;
+  opacity: 1;
+  display: block;
+  width: 70%;
+  height: auto;
+  transition: .5s ease;
+  backface-visibility: hidden;
+  height: 90%;
+  border-radius: 10px;
+  margin: 0 auto;
+}
 
 .middle {
   transition: .5s ease;
