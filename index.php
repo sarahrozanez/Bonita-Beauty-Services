@@ -38,9 +38,9 @@
       <a href="./index.php" class="w3-bar-item w3-button"><b></b> Bonita Beauty Services!</a>
       <!-- Float links to the right. Hide them on small screens -->
       <div class="w3-right w3-hide-small">
-        <a href="./index.php#services" class="w3-bar-item w3-button">Services</a>
-        <a href="./index.php#about" class="w3-bar-item w3-button">About</a>
-        <a href="./index.php#contact" class="w3-bar-item w3-button">Contact</a>
+        <a href="#services" class="w3-bar-item w3-button">Services</a>
+        <a href="#about" class="w3-bar-item w3-button">About</a>
+        <a href="#contact" class="w3-bar-item w3-button">Contact</a>
         <a href="./index.php#rowBookNow" class="w3-bar-item w3-button">Book Now!</a>
         <a id = "optionBooks" href="./books.php" class="w3-bar-item w3-button">Your Books</a>
       </div>
@@ -79,39 +79,7 @@
       </p>
     </div>
 
-    <div class="w3-row-padding w3-grayscale">
-      <div class="w3-col l3 m6 w3-margin-bottom">
-        <div class="imageContainer">
-        <img class="image" src="./images/John Doe.png" alt="John" >
-      </div>
-        <h3>John Doe</h3>
-        <p class="w3-opacity">Massagist</p>
-        <p>Phasellus eget enim eu lectus faucibus vestibulum. Suspendisse sodales pellentesque elementum.</p>
-        <p><button class="w3-button w3-light-grey w3-block">Contact</button></p>
-      </div>
-      <div class="w3-col l3 m6 w3-margin-bottom">
-        <div class="imageContainer">
-        <img class="image" src="./images/Lorena.jpg" alt="Lorena" >
-      </div>
-        <h3>Lorena Doe</h3>
-        <p class="w3-opacity">Architect</p>
-        <p>Phasellus eget enim eu lectus faucibus vestibulum. Suspendisse sodales pellentesque elementum.</p>
-        <p><button class="w3-button w3-light-grey w3-block">Contact</button></p>
-      </div>
-      <div class="w3-col l3 m6 w3-margin-bottom">
-        <img src="/w3images/team3.jpg" alt="Mike" style="width:100%">
-        <h3>Mike Ross</h3>
-        <p class="w3-opacity">Architect</p>
-        <p>Phasellus eget enim eu lectus faucibus vestibulum. Suspendisse sodales pellentesque elementum.</p>
-        <p><button class="w3-button w3-light-grey w3-block">Contact</button></p>
-      </div>
-      <div class="w3-col l3 m6 w3-margin-bottom">
-        <img src="/w3images/team4.jpg" alt="Dan" style="width:100%">
-        <h3>Dan Star</h3>
-        <p class="w3-opacity">Architect</p>
-        <p>Phasellus eget enim eu lectus faucibus vestibulum. Suspendisse sodales pellentesque elementum.</p>
-        <p><button class="w3-button w3-light-grey w3-block">Contact</button></p>
-      </div>
+    <div class="w3-row-padding w3-grayscale" id = "about-items">
     </div>
 
     <!-- Contact Section -->
