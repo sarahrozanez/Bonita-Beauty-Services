@@ -14,7 +14,7 @@ print '<mydata>';
 $host =  'localhost';
 $userid =  'root';
 $password = '';
-$dbname = 'login_course';
+$dbname = 'proj_beauty';
 
 $db = mysqli_connect($host, $userid, $password, $dbname);
 
@@ -28,7 +28,7 @@ if (!$db)
 //$statement .= "FROM staff ";
 //$statement .= "ORDER BY firstname ";
 
-$statement  = "SELECT c.staff_service_id, s.staff_id, s.firstname, s.lastname, s.description, s.email,s.phone, s.image_file FROM staff s, staff_service c WHERE s.staff_id = c.staff_id AND c.service_id = $serv_id";
+$statement  = "SELECT c.staff_service_id, s.staff_id, s.firstname, s.lastname, s.description, s.email,s.phone, s.image_file FROM staff s, staff_service c WHERE s.staff_id = c.staff_id AND c.service_id = $serv_id group by s.staff_id";
 
 $result = mysqli_query($db, $statement);
 
