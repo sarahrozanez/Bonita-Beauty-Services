@@ -17,7 +17,7 @@ class Page {
 		}
 	}
 
-	static function ForceDashboard() {
+	static function ForceIndex() {
 		if(isset($_SESSION['user_id'])) {
 			echo '<script>console.log(' . $_SESSION['user_id'] . '); </script>'; 
 			header("Location: ./index.php"); exit;

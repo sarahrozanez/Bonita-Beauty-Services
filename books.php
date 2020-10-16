@@ -21,14 +21,13 @@
         }
     
     $user_id = $_SESSION['user_id'];
-    //Connect to the Database
-            
-    $host =  'localhost';
-    $userid =  'root';
-    $password = '';
-    $dbname = 'proj_beauty';
+  
 
-    $db = mysqli_connect($host, $userid, $password, $dbname);
+    // Include the DB.php file;
+    include_once "./inc/classes/DB.php";
+
+    //Connect to the Database
+    $db = DB::getConnection();
 
     if (!$db)
     {

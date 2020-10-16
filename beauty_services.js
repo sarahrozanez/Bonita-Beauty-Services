@@ -73,7 +73,7 @@ function getXMLAbout(dataSource, target, data) {
 
 function createOptionsAndImage(myXML, target, data) {
 	console.log("createOptionsAndImage: target: " + target + "data: " + data);
-	showXMLText(myXML);  //Displays XML in an alert() box
+	//showXMLText(myXML);  //Displays XML in an alert() box
 
 	if (target == "staff") {
 		createOptionsStaff(myXML, target, data);

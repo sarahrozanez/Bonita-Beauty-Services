@@ -9,14 +9,13 @@ print '<?xml version = "1.0" ?>';
 
 print '<mydata>';
  
-//Connect to the Database
-				
-$host =  'localhost';
-$userid =  'root';
-$password = '';
-$dbname = 'proj_beauty';
+// Allow the config
+define('__CONFIG__', true);
+// Include the DB.php file;
+include_once "./inc/classes/DB.php";
 
-$db = mysqli_connect($host, $userid, $password, $dbname);
+//Connect to the Database
+$db = DB::getConnection();
 
 if (!$db)
 {
@@ -24,7 +23,7 @@ if (!$db)
 	exit;
 }
 
-$statement  = "SELECT ss.staff_service_id, ss.date, ss.time FROM staff_service ss, staff s WHERE s.staff_id = ss.staff_id AND s.firstname = '$staff_value' and ss.service_id = $serv_id";
+$statement  = "SELECT ss.staff_service_id, ss.date, ss.time FROM staff_service ss, staff s WHERE s.staff_id = ss.staff_id AND s.firstname = '$staff_value' and ss.service_id = $serv_id group by ss.date";
 
 $result = mysqli_query($db, $statement);
 

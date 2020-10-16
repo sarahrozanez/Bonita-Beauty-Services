@@ -9,15 +9,14 @@ header("Content-type: text/xml");  // Makes IE 7 see the returned document as XM
 print '<?xml version = "1.0" ?>';
 
 print '<mydata>';
- 
-//Connect to the Database
-				
-$host =  'localhost';
-$userid =  'root';
-$password = '';
-$dbname = 'proj_beauty';
 
-$db = mysqli_connect($host, $userid, $password, $dbname);
+ // Allow the config
+ define('__CONFIG__', true);
+ // Include the DB.php file;
+ include_once "./inc/classes/DB.php";
+
+ //Connect to the Database
+ $db = DB::getConnection();
 
 if (!$db)
 {

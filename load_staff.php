@@ -9,14 +9,13 @@ print '<?xml version = "1.0" ?>';
 
 print '<mydata>';
  
-//Connect to the Database
-				
-$host =  'localhost';
-$userid =  'root';
-$password = '';
-$dbname = 'proj_beauty';
+// Allow the config
+define('__CONFIG__', true);
+// Include the DB.php file;
+include_once "./inc/classes/DB.php";
 
-$db = mysqli_connect($host, $userid, $password, $dbname);
+//Connect to the Database
+$db = DB::getConnection();
 
 if (!$db)
 {
