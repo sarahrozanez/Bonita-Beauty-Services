@@ -17,15 +17,12 @@ $myData = strtolower($myData);   //Converts the value in $myData to lowercase
 
 header("Content-type: text/xml");  // Makes IE 7 see the returned document as XML!!!
 print '<?xml version = "1.0" ?>';
- 
-//Connect to the Database
-				
-$host =  'localhost';
-$userid =  'root';
-$password = '';
-$dbname = 'proj_beauty';
 
-$db = mysqli_connect($host, $userid, $password, $dbname);
+// Include the DB.php file;
+include_once "./inc/classes/DB.php";
+
+//Connect to the Database
+$db = DB::getConnection();
 
 if (!$db)
 {

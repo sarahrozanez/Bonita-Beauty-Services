@@ -9,19 +9,14 @@ print '<?xml version = "1.0" ?>';
 print '<mydata>';
 
 	// Allow the config
-	//define('__CONFIG__', true);
+	define('__CONFIG__', true);
 	// Include the DB.php file;
-	//include_once "./inc/classes/DB.php";
+	include_once "./inc/classes/DB.php";
 
-	//$db = DB::getConnection();
-//Connect to the Database
+	//Connect to the Database
+	$db = DB::getConnection();
+
 				
-$host =  'localhost';
-$userid =  'root';
-$password = '';
-$dbname = 'proj_beauty';
-
-$db = mysqli_connect($host, $userid, $password, $dbname);
 if (!$db)
 {
 	print "<h1>Unable to Connect to MySQL</h1>";
