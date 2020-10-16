@@ -11,6 +11,7 @@ class User {
 
 	public $user_id;
 	public $user_name;
+	public $last_name;
 	public $email;
 	public $reg_time;
 
@@ -20,7 +21,7 @@ class User {
 		$user_id = Filter::Int( $user_id );
 
 		// prepare and bind
-		$user = $this->con->prepare("SELECT user_id, firstname, email, reg_time FROM users WHERE user_id = ? LIMIT 1");
+		$user = $this->con->prepare("SELECT user_id, firstname, lastname, email, reg_time FROM users WHERE user_id = ? LIMIT 1");
 		$user->bind_param('i', $user_id);
 		$user->execute();
 
@@ -32,7 +33,8 @@ class User {
 			$result = $user->get_result();
 			$user = $result->fetch_assoc();
 
-			$this->user_name 		= (string) $user["firstname"];
+			$this->user_name 	= (string) $user["firstname"];
+			$this->last_name 	= (string) $user["lastname"];
 			$this->email 		= (string) $user["email"]; 
 			$this->user_id 		= (int) $user["user_id"];  
 			$this->reg_time 	= (string) $user["reg_time"];

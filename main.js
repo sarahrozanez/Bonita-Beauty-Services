@@ -7,6 +7,9 @@ window.onload = function () {
 	var _error = $(".js-error", _form);
 
 	var dataObj = {
+		firstN: $("input[type='text']", _form).val(),
+		lastN: $("input[type='text']", _form).val(),
+		number: $("input[type='number']", _form).val(),
 		email: $("input[type='email']", _form).val(),
 		password: $("input[type='password']", _form).val()
 	};
@@ -19,9 +22,9 @@ window.onload = function () {
 				.text("Please enter a valid email address")
 				.show();
 			return false;
-		} else if (dataObj.password.length < 11) {
+		} else if (dataObj.password.length < 6) {
 			_error
-				.text("Please enter a passphrase that is at least 11 characters long.")
+				.text("Please enter a passphrase that is at least 6 characters long.")
 				.show();
 			return false;
 		}

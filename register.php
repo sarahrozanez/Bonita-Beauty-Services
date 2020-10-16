@@ -48,6 +48,15 @@
         <div class="logincontainer">
 
           <form method="POST" id="registerForm" class="form">
+                  <label>First Name</label>
+                  <input type="text" id="firstN" placeholder="First Name">
+
+                  <label>Last Name</label>
+                  <input type="text" id="lastN" placeholder="Last Name">
+
+                  <label>Phone number</label>
+                  <input type="number" id="number" placeholder="Phone number">
+
                   <label>Email</label>
                   <input type="email" id="email" placeholder="Enter email">
   

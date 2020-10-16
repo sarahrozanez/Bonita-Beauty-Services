@@ -27,8 +27,7 @@
   <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css"
     integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous" />
   <link rel="stylesheet" href="style.css" type="text/css" media="screen">
-  <script src="./beauty_services.js"></script>
-</head>
+ </head>
 
 <body>
 <script type="text/javascript" src="js/beauty_services.js"></script>

@@ -16,6 +16,10 @@
 		$user_found = User::Find($email);
 		$email = strtolower($email);
 
+		$firstN = $_POST['firstN'];
+		$lastN = $_POST['lastN'];
+		$number = $_POST['number'];
+
 		if($user_found) {
 			// User exists 
 			// We can also check to see if they are able to log in. 
@@ -26,8 +30,8 @@
 
 			$password = password_hash($_POST['password'], PASSWORD_DEFAULT);
 			
-			$addUser = $con->prepare("INSERT INTO users(email, password) VALUES(?, ?)");
-			$addUser->bind_param('ss', $email, $password);
+			$addUser = $con->prepare("INSERT INTO users(firstname, lastname, phone, email, password) VALUES(?, ?, ?, ?, ?)");
+			$addUser->bind_param('ssiss', $firstN, $lastN, $number, $email, $password);
 			$addUser->execute();
 			$user_id = mysqli_insert_id($con);
 			//$user_id = $con->lastInsertId();
