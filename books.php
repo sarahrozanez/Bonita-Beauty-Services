@@ -123,16 +123,15 @@
         <a href="./index.php#about" class="w3-bar-item w3-button">About</a>
         <a href="./index.php#contact" class="w3-bar-item w3-button">Contact</a>
         <a href="./index.php#rowBookNow" class="w3-bar-item w3-button">Book Now!</a>
-        <a id = "optionBooks" href="./books.php" class="w3-bar-item w3-button">Your Books</a>
+        <a id = "optionBooks" href="./books.php" class="w3-bar-item w3-button">Your Bookings</a>
       </div>
     </div>
   </div>
 
   <!-- Header -->
   <header class="w3-display-container w3-content w3-wide" style="max-width:1500px;" id="home">
-    <img class="w3-image" src="./images/logo.png" alt="Architecture" width="550" height="600">
     <div class="w3-display-middle w3-margin-top w3-center">
-      <h1 class="logo-text"><b>Bonita Beauty </b><br>Services</br></span>
+      <h1 class="logo-text-book"><b>Bonita Beauty </b><br>Services</br></span>
       <p>Hello <?php echo $User->user_name; ?></p>
     </div>
   </header>

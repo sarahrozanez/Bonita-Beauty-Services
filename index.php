@@ -42,7 +42,7 @@
         <a href="#about" class="w3-bar-item w3-button">About</a>
         <a href="#contact" class="w3-bar-item w3-button">Contact</a>
         <a href="./index.php#rowBookNow" class="w3-bar-item w3-button">Book Now!</a>
-        <a id = "optionBooks" href="./books.php" class="w3-bar-item w3-button">Your Books</a>
+        <a id = "optionBooks" href="./books.php" class="w3-bar-item w3-button">Your Bookings</a>
       </div>
     </div>
   </div>
@@ -69,13 +69,7 @@
     <!-- About Section -->
     <div class="w3-container w3-padding-32" id="about">
       <h3 class="w3-border-bottom w3-border-light-grey w3-padding-16">About</h3>
-      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore
-        magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-        consequat. Excepteur sint
-        occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum consectetur
-        adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-        quis nostrud exercitation ullamco
-        laboris nisi ut aliquip ex ea commodo consequat.
+      <p>Bonita Beauty Services is a remarkable project with the purpose to aggregate value to the beauty industry by gathering professionals and clients together in a friendly and reliable environment. In this website, professionals are able to advertise their services, while you, our most valuable customers can quickly choose from a range of services and professionals that better suit your needs and agenda!!!
       </p>
     </div>
 

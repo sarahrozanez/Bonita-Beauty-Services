@@ -155,6 +155,13 @@ overflow: hidden;
   margin: 5px;
 }
 
+.logo-text-book{
+  padding-top: 300px;
+  color: rgb(0, 0, 0)!important;
+  text-align: center;
+  margin: 5px;
+}
+
 .midcenter:after {
   content: "";
   display: table;
@@ -229,11 +236,11 @@ label {
   }
 
   #heading {
+    padding-top: 150px;
     text-align: center;
-    margin: 100px 100px 100px 100px;
+    margin: 100px 100px 50px 100px;
     border-collapse: collapse;
     }
-
 
     tbody{
       width: 100%;
