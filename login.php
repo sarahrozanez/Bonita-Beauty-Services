@@ -20,7 +20,6 @@
 
 <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
   integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
-
 <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css"
   integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous" />
 <link rel="stylesheet" href="style.css" type="text/css" media="screen">
@@ -33,9 +32,9 @@
       <a href="index.php" class="w3-bar-item w3-button"><b></b> Bonita Beauty Services!</a>
       <!-- Float links to the right. Hide them on small screens -->
       <div class="w3-right w3-hide-small">
-        <a href="index.php#services" class="w3-bar-item w3-button">Services</a>
-        <a href="index.php#about" class="w3-bar-item w3-button">About</a>
-        <a href="index.php#contact" class="w3-bar-item w3-button">Contact</a>
+        <a href="#services" class="w3-bar-item w3-button">Services</a>
+        <a href="#about" class="w3-bar-item w3-button">About</a>
+        <a href="#contact" class="w3-bar-item w3-button">Contact</a>
         <a href="register.php" class="w3-bar-item w3-button">Register</a>
       </div>
     </div>
@@ -65,6 +64,38 @@
 
   <!-- Page content -->
   <div class="w3-content w3-padding" style="max-width:1564px">
+ <!-- Project Section -->
+ <div class="w3-container w3-padding-32" id="services">
+      <h3 class="w3-border-bottom w3-border-light-grey w3-padding-16">Services</h3>
+    </div>
+    <div class="w3-row-padding" id="services-items">
+    </div>
+
+    <!-- About Section -->
+    <div class="w3-container w3-padding-32" id="about">
+      <h3 class="w3-border-bottom w3-border-light-grey w3-padding-16">About</h3>
+      <p>Bonita Beauty Services is a remarkable project with the purpose to aggregate value to the beauty industry by gathering professionals and clients together in a friendly and reliable environment. In this website, professionals are able to advertise their services, while you, our most valuable customers can quickly choose from a range of services and professionals that better suit your needs and agenda!!!
+      </p>
+    </div>
+
+    <div class="w3-row-padding w3-grayscale" id = "about-items">
+    </div>
+
+    <!-- Contact Section -->
+    <div class="w3-container w3-padding-32" id="contact">
+      <h3 class="w3-border-bottom w3-border-light-grey w3-padding-16">Contact</h3>
+      <p>Contact</p>
+      <form action="/action_page.php" target="_blank">
+
+        <input class="w3-input w3-border" type="text" placeholder="Name" required name="Name">
+        <input class="w3-input w3-section w3-border" type="text" placeholder="Email" required name="Email">
+        <input class="w3-input w3-section w3-border" type="text" placeholder="Subject" required name="Subject">
+        <input class="w3-input w3-section w3-border" type="text" placeholder="Comment" required name="Comment">
+        <button class="w3-button w3-black w3-section" type="submit">
+          <i class="fa fa-paper-plane"></i> SEND MESSAGE
+        </button>
+      </form>
+    </div>
 
 
   <!-- End page content -->

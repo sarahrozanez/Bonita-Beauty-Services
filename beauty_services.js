@@ -112,7 +112,7 @@ function createOptionsAndImage(myXML, target, data) {
 						<div class="w3-display-container" style="height:300px;">
 							<div class="w3-display-topleft w3-black w3-padding">${taskArray[loopIndex]}</div>
 							<img id= "${idArray[loopIndex]}" src="./images/${imageArray[loopIndex]}" class="image"/>
-							<div class="middle">
+							<div id = "middle" class="middle">
 								<a href="#booknow"></a>
 								<div class="text">
 									<a onclick="triggerChange(${idArray[loopIndex]})" href="#booknow">Book now!</a>
@@ -124,8 +124,9 @@ function createOptionsAndImage(myXML, target, data) {
 			}
 			//if (target == "service"){
 			document.getElementById("services-items").innerHTML = myHTMLImages;
-			document.getElementById(target).innerHTML = myHTML;
-
+			if(document.getElementById(target) != null ){
+				document.getElementById(target).innerHTML = myHTML;
+			}
 			//}
 
 			var dataSource = 'load_staff_db.php';
@@ -134,8 +135,9 @@ function createOptionsAndImage(myXML, target, data) {
 			getXMLAbout(dataSource, target, data);
 
 		}
-
+		
 	}
+	//document.getElementById(target).innerHTML = myHTML;
 }
 
 function createOptionsAndImageAbout(myXML, target, data) {
