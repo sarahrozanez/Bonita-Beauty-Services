@@ -7,8 +7,8 @@ window.onload = function () {
 	var _error = $(".js-error", _form);
 
 	var dataObj = {
-		firstN: $("input[type='text']", _form).val(),
-		lastN: $("input[type='text']", _form).val(),
+		firstN: $("input[id='firstN']", _form).val(),
+		lastN: $("input[id='lastN']", _form).val(),
 		number: $("input[type='number']", _form).val(),
 		email: $("input[type='email']", _form).val(),
 		password: $("input[type='password']", _form).val()
